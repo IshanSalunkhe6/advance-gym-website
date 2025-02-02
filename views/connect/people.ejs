@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>People Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>People</h1>
+  </header>
+  <main>
+    <% if (users) { %>
+      <% const currentUserId = req.session.userId; %>
+      <% const otherUsers = users.filter(user => user._id.toString() !== currentUserId.toString()); %>
+      <% otherUsers.forEach(user => { %>
+        <div class="person-card" id="person-<%= user._id %>">
+          <h2><a href='/connect/<%= user._id %>'><%= user.name %></a></h2>
+          <div class="buttons">
+            <button class="view-details">Message</button>
+            <button class="add-friend">Add Friend</button>
+          </div>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p>No users found.</p>
+    <% } %>
+  </main>
+  <script src="script.js"></script>
+</body>z
+</html>

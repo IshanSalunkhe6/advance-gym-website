@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f2ef;
+        }
+
+        header {
+            background-color: #283e4a;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-form label {
+            margin-bottom: 8px;
+        }
+
+        .post-form textarea,
+        .post-form input[type="file"] {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        .post-form textarea {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .post-form button {
+            background-color: #0077B5;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .post-form button:hover {
+            background-color: #005983;
+        }
+
+        .error-message {
+            color: #ff0000;
+            margin-top: 5px;
+        }
+
+        .post-content {
+            white-space: pre-wrap; /* Preserve whitespace and formatting */
+        }
+
+        .post-image {
+            max-width: 100%;
+            max-height: 300px; /* Set maximum height */
+            width: auto;
+            height: auto;
+            border-radius: 5px;
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Create Post</h1>
+    </header>
+    <main>
+        <form class="post-form" action="/createpost/<%= group.groupId %>" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+            <label for="title">Post Title:</label>
+            <input type="text" id="title" name="title" required>
+            
+            <label for="post-content">Write your post:</label>
+            <textarea id="post-content" name="post-content" rows="4" placeholder="Share your thoughts..." required></textarea>
+            
+            <label for="post-image">Upload an image (optional):</label>
+            <input type="file" id="post-image" name="post-image">
+
+            <button type="submit">Post</button>
+
+            <div class="error-message" id="error-message"></div>
+        </form>
+    </main>
+
+    <script>
+        function validateForm() {
+            var postContent = document.getElementById('post-content').value.trim();
+
+            if (postContent === '') {
+                document.getElementById('error-message').innerText = 'Please enter your post content.';
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>

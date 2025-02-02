@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5; /* Instagram, Twitter, LinkedIn background color */
+  }
+  
+  a {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit color from parent element */
+  }
+  
+  header {
+    background-color: #0077B5; /* LinkedIn header background color */
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .header-text {
+    margin-right: 20px;
+    font-size: 16px; /* Font size adjustment */
+  }
+  
+  .light-blue-button {
+    background-color: #1DA1F2; /* Twitter button background color */
+    border: none;
+    color: #fff;
+    padding: 8px 16px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add transition effect */
+  }
+  
+  .light-blue-button:hover {
+    background-color: #0F7BB0; /* Darker color on hover */
+  }
+  
+  .create-group {
+    font-size: 24px; /* Font size adjustment */
+  }
+  
+  .create-group:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  .person-card {
+    background-color: #fff; /* White background for cards */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .person-card h2 {
+    margin: 0;
+  }
+  
+  .group-description {
+    margin: 5px 0 0;
+    color: #666;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+  
+  .buttons button {
+    background-color: #1DA1F2; /* Twitter button background color */
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease; /* Add transition effect */
+  }
+  
+  .buttons button:hover {
+    background-color: #0F7BB0; /* Darker color on hover */
+  }

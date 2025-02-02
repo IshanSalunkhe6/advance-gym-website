@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    
+
+    <main>
+        <div class="profile-header">
+            <div class="profile-image">
+                <i class="fas fa-user-circle fa-5x"></i>
+             
+                 
+                    
+                    
+                </button>
+            </div>
+            <div class="profile-info">
+                <h1><%=personal.name%></h1>
+            </div>
+        </div>
+        
+        <section class="about">
+            <h2>About:</h2>
+            <p><%=personal.about%></p>
+          
+            
+        </section>
+        <section class="expertise">
+            <h2>Expertise:</h2>
+            <p><%=personal.expertise%></p>
+        </section>
+        <section class="tradinginst">
+            <h2>Trading Instruments:</h2>
+            <p><%=personal.tradinginst%></p>
+        </section>
+        <section class="tradingstrat">
+            <h2>Stratagies:</h2>
+            <p><%=personal.tradingstrat%></p>
+        </section>
+
+      
+
+        
+
+        <section class="hobbies">
+            <h2>Hobbies</h2>
+            <ul>
+                <li><%=personal.hobbies%></li>
+                
+            </ul>
+        </section>
+    </main>
+</body>
+
+</html>

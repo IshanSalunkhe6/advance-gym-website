@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= group.group_name %> - Group Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f2ef;
+        }
+
+        header {
+            background-color: #283e4a;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .post {
+            background-color: #fff;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+        }
+
+        .post-header img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .post-info h2 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: #333;
+        }
+
+        .post-info p {
+            margin: 0;
+            color: #777;
+            font-size: 1rem;
+        }
+
+        .post-content {
+            margin-top: 10px;
+            white-space: pre-wrap; /* Preserve whitespace and formatting */
+        }
+
+        .post-image {
+            max-width: 100%;
+            max-height: 300px; /* Set maximum height */
+            width: auto;
+            height: auto;
+            border-radius: 5px;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .post-actions {
+            margin-top: 10px;
+        }
+
+        .post-actions button {
+            background-color: #0077B5;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            margin-right: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .post-actions button:hover {
+            background-color: #005983;
+        }
+
+        .group-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><%= group.group_name %></h1>
+        
+    </header>
+    <main>
+        <% if (group && group.posts.length > 0) { %>
+            <% group.posts.forEach((post) => { %>
+                <div class="post">
+                    <div class="post-header">
+                        <img src="<%= group.logo ? group.logo : 'https://via.placeholder.com/50' %>" alt="Group Logo" class="group-logo">
+                        <div class="post-info">
+                            <h2><%= group.group_name %></h2>
+                            <p>Posted on <%= new Date(post.createdAt).toLocaleDateString() %></p>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <% if (post.image) { %>
+                            <img src="<%= post.image %>" alt="Posted Image" class="post-image">
+                        <% } %>
+                        <p class="post-content"><%= post.text %></p>
+                    </div>
+                    <div class="post-actions">
+                        <button>Like</button>
+                        <button>Comment</button>
+                        <button>Share</button>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No posts available.</p>
+        <% } %>
+    </main>
+</body>
+</html>

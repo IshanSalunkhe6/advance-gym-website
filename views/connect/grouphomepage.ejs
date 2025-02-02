@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Groups</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        header {
+            background-color: #0077B5;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .header-text {
+            margin-right: 20px;
+            font-size: 16px;
+        }
+
+        .light-blue-button {
+            background-color: #1DA1F2;
+            border: none;
+            color: #fff;
+            padding: 8px 16px;
+            text-align: center;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .light-blue-button:hover {
+            background-color: #0F7BB0;
+        }
+
+        .create-group {
+            font-size: 24px;
+        }
+
+        .create-group:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            height: calc(100vh - 60px); /* Adjust for header height */
+        }
+
+        .group-container {
+            width: 50%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        .group-item {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .group-item:hover {
+            background-color: #f1f1f1;
+        }
+
+        .group-item img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .group-details {
+            flex-grow: 1;
+        }
+
+        .group-details h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .group-details .owner-name {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .group-details p {
+            margin: 5px 0 0;
+            color: #777;
+        }
+
+        .time-ago {
+            font-size: 0.8rem;
+            color: #999;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/homepage" class="back-button"><i class="fa fa-arrow-left"></i></a>
+        <a href="/group" style="text-decoration: none; color: inherit;">
+            <div>My Groups</div>
+        </a>
+        <button class="light-blue-button">Groups</button>
+        <a href="/joinedgroups" style="text-decoration: none; color: inherit;"><div>Groups Joined</div></a>
+        <a href="/addgroup" class="create-group">+</a>
+    </header>
+    <main>
+        <div class="group-container">
+            <% if (groups.length > 0) { %>
+                <% groups.forEach((group, index) => { %>
+                    <a href="/subscribe/<%= group.groupId %>" class="group-item" id="group_<%= index %>">
+                        <img src="<%= group.logo ? group.logo : 'https://via.placeholder.com/50' %>" alt="Group Logo">
+                        <div class="group-details">
+                            <h3><%= group.group_name %></h3>
+                            <p class="owner-name"><%= group.ownerId.name %></p>
+                            <p><%= group.title %></p>
+                            <div class="time-ago">Posted <%= new Date(group.createdAt).toLocaleDateString() %></div>
+                        </div>
+                    </a>
+                <% }); %>
+            <% } else { %>
+                <p>No groups found.</p>
+            <% } %>
+        </div>
+    </main>
+</body>
+</html>
