@@ -69,14 +69,16 @@
         border-radius: 4px;
         cursor: pointer;
         font-size: 16px;
+        text-decoration: none;   /* remove underline */
+        display: inline-block;   /* make it behave like a button */
+        text-align: center;
         transition: background-color 0.3s;
-        display: block;
-        margin: 0 auto;
-    }
+        }
 
-    .pay-button:hover {
+        .pay-button:hover {
         background-color: #45a049;
-    }
+        }
+
 </style>
 <body>
     <div class="container">
@@ -107,7 +109,7 @@
                     <p><%= group.description %></p>
                 </div>
             </div>
-            <a href="/pay/<%= group.groupId %>"><button class="pay-button">Pay</button></a>
+            <a href="/pay/<%= group.groupId %>" class="pay-button">Pay</a>
         </main>
     </div>
 </body>
